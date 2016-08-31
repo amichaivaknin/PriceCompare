@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+<Item>
+  <ItemName>מלפפון</ItemName>
+  <UnitQty>ק"ג</UnitQty>
+  <GlobalCode>0</GlobalCode>
+  <Chains>
+   <Chain>
+   <ChainId>7290661400001</ChainId>
+   <ItemCode>645</ItemCode>
+   </Chain>
+   <Chain>
+   <ChainId>7290696200003</ChainId>
+   <ItemCode>2028</ItemCode>
+   </Chain>
+   <Chain>
+   <ChainId>7290058179503</ChainId>
+   <ItemCode>645</ItemCode>
+   </Chain>
+   <Chain>
+   <ChainId>7290058148776</ChainId>
+   <ItemCode>645</ItemCode>
+   </Chain>
+  </Chains>
+</Item>
+<Item>
+  <ItemName>מלון</ItemName>
+  <UnitQty>ק"ג</UnitQty>
+  <GlobalCode>0</GlobalCode>
+  <Chains>
+   <Chain>
+   <ChainId>7290661400001</ChainId>
+   <ItemCode>540</ItemCode>
+   </Chain>
+   <Chain>
+   <ChainId>7290696200003</ChainId>
+   <ItemCode>2029</ItemCode>
+   </Chain>
+   <Chain>
+   <ChainId>7290058179503</ChainId>
+   <ItemCode>850</ItemCode>
+   </Chain>
+   <Chain>
+   <ChainId>7290058148776</ChainId>
+   <ItemCode>850</ItemCode>
+   </Chain>
+  </Chains>
+</Item>
+<Item>
+  <ItemName>פלפל צהוב</ItemName>
+  <UnitQty>ק"ג</UnitQty>
+  <GlobalCode>0</GlobalCode>
+   <Chains>
+   <Chain>
+   <ChainId>7290661400001</ChainId>
+   <ItemCode>666</ItemCode>
+   </Chain>
+   <Chain>
+   <ChainId>7290696200003</ChainId>
+   <ItemCode>2067</ItemCode>
+   </Chain>
+   <Chain>
+   <ChainId>7290058179503</ChainId>
+   <ItemCode>845</ItemCode>
+   </Chain>
+   <Chain>
+   <ChainId>7290058148776</ChainId>
+   <ItemCode>845</ItemCode>
+   </Chain>
+  </Chains>
+</Item>
+</Items>
+ 

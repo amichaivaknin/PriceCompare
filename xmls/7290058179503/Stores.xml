@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Store Date="28/08/16" Time="06:00:06">
+  <Branches>
+     <Branch>
+      <ChainID>7290058179503</ChainID>
+      <SubChainID>001</SubChainID>
+      <StoreID>011</StoreID>
+      <BikoretNo />
+      <StoreType>1</StoreType>
+      <ChainName>מ.להב</ChainName>
+      <SubChainName>מ.להב</SubChainName>
+      <StoreName>באר שבע</StoreName>
+      <Address>שדרות דוד טוביה 125</Address>
+      <City>באר שבע</City>
+      <ZIPCode />
+      <LastUpdateDate>21/04/2015 17:38:27</LastUpdateDate>
+      <Latitude />
+      <Longitude />
+    </Branch>
+    <Branch>
+      <ChainID>7290058179503</ChainID>
+      <SubChainID>001</SubChainID>
+      <StoreID>020</StoreID>
+      <BikoretNo />
+      <StoreType>1</StoreType>
+      <ChainName>מ.להב</ChainName>
+      <SubChainName>מ.להב</SubChainName>
+      <StoreName>נתניה</StoreName>
+      <Address>הרצל 58</Address>
+      <City>נתניה</City>
+      <ZIPCode />
+      <LastUpdateDate>21/04/2015 17:39:05</LastUpdateDate>
+      <Latitude />
+      <Longitude />
+    </Branch>
+    <Branch>
+      <ChainID>7290058179503</ChainID>
+      <SubChainID>001</SubChainID>
+      <StoreID>030</StoreID>
+      <BikoretNo />
+      <StoreType>1</StoreType>
+      <ChainName>מ.להב</ChainName>
+      <SubChainName>מ.להב</SubChainName>
+      <StoreName>חיפה</StoreName>
+      <Address>ההסתדרות 248</Address>
+      <City>קרית אתא</City>
+      <ZIPCode />
+      <LastUpdateDate>21/04/2015 17:40:29</LastUpdateDate>
+      <Latitude />
+      <Longitude />
+    </Branch>
+    <Branch>
+      <ChainID>7290058179503</ChainID>
+      <SubChainID>001</SubChainID>
+      <StoreID>075</StoreID>
+      <BikoretNo />
+      <StoreType>1</StoreType>
+      <ChainName>מ.להב</ChainName>
+      <SubChainName>מ.להב</SubChainName>
+      <StoreName>נתניה א.תעשיה</StoreName>
+      <Address>הקדר 6</Address>
+      <City>נתניה</City>
+      <ZIPCode />
+      <LastUpdateDate>21/04/2015 17:42:40</LastUpdateDate>
+      <Latitude />
+      <Longitude />
+    </Branch>
+  </Branches>
+</Store>

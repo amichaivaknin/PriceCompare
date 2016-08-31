@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Store Date="28/08/16" Time="06:00:06">
+  <Branches>
+    <Branch>
+      <ChainID>7290696200003</ChainID>
+      <SubChainID>001</SubChainID>
+      <StoreID>068</StoreID>
+      <BikoretNo />
+      <StoreType>1</StoreType>
+      <ChainName>ויקטורי</ChainName>
+      <SubChainName>ויקטורי</SubChainName>
+      <StoreName>באר שבע</StoreName>
+      <Address>בן גוריון 15</Address>
+      <City>באר שבע</City>
+      <ZIPCode />
+      <LastUpdateDate>16/04/2015 13:20:16</LastUpdateDate>
+      <Latitude />
+      <Longitude />
+    </Branch>
+    <Branch>
+      <ChainID>7290696200003</ChainID>
+      <SubChainID>001</SubChainID>
+      <StoreID>090</StoreID>
+      <BikoretNo />
+      <StoreType>0</StoreType>
+      <ChainName>ויקטורי</ChainName>
+      <SubChainName>ויקטורי</SubChainName>
+      <StoreName>נתניה</StoreName>
+      <Address>האורזים 4</Address>
+      <City>נתניה</City>
+      <ZIPCode>42377</ZIPCode>
+      <LastUpdateDate>14/04/2015 16:42:53</LastUpdateDate>
+      <Latitude />
+      <Longitude />
+    </Branch>
+    <Branch>
+      <ChainID>7290696200003</ChainID>
+      <SubChainID>001</SubChainID>
+      <StoreID>097</StoreID>
+      <BikoretNo />
+      <StoreType>2</StoreType>
+      <ChainName>ויקטורי</ChainName>
+      <SubChainName>ויקטורי</SubChainName>
+      <StoreName>אינטרנט</StoreName>
+      <Address>www.mysupermarket </Address>
+      <City />
+      <ZIPCode />
+      <LastUpdateDate>27/10/2015 09:54:59</LastUpdateDate>
+      <Latitude />
+      <Longitude />
+    </Branch>
+  </Branches>
+</Store>
