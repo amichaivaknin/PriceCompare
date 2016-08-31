@@ -9,6 +9,7 @@ namespace PriceCompareLogic.DataProvider
 {
     internal class XmlAccessor
     {
+
         internal static IDictionary<int, MapItem> ReadMapItems()
         {
             var i = 1;
@@ -25,14 +26,6 @@ namespace PriceCompareLogic.DataProvider
                     GlobalCode = false,
                     ItemCodeByChains = GetCodeByChain(item.Element("Chains"))
                 }).ToDictionary(x => x.Id);
-        }
-
-        private static IDictionary<string, string> GetCodeByChain(XContainer chains)
-        {
-            if (chains == null) throw new ArgumentNullException(nameof(chains));
-            return chains.Elements("Chain")
-                .ToDictionary(chain => chain.Element("ChainId")?.Value,
-                    chain => chain.Element("ItemCode")?.Value);
         }
 
         internal static IEnumerable<StoreItem> GetItem(string fileName, string itemCode)
@@ -79,6 +72,14 @@ namespace PriceCompareLogic.DataProvider
                     StoreName = branch.Element("StoreName")?.Value,
                     Address = branch.Element("Address")?.Value
                 };
+        }
+
+        private static IDictionary<string, string> GetCodeByChain(XContainer chains)
+        {
+            if (chains == null) throw new ArgumentNullException(nameof(chains));
+            return chains.Elements("Chain")
+                .ToDictionary(chain => chain.Element("ChainId")?.Value,
+                    chain => chain.Element("ItemCode")?.Value);
         }
     }
 }

@@ -11,16 +11,17 @@ namespace PriceCompareLogic.DataProvider
     {
         private readonly ConcurrentDictionary<string, ShoppingCart> _storesCarts;
 
-        public XmlsEngine()
-        {
-            _storesCarts = new ConcurrentDictionary<string, ShoppingCart>();
-        }
-
         public IDictionary<int, MapItem> MapItems => XmlAccessor.ReadMapItems();
 
         public IEnumerable<ShoppingCart> ShoppingCarts
         {
-            get { return _storesCarts.Select(storeCart => storeCart.Value).ToList().OrderBy(l => l.Total); }
+            get { return _storesCarts.Select(storeCart => storeCart.Value).ToList()
+                                                            .OrderBy(l => l.Total); }
+        }
+
+        public XmlsEngine()
+        {
+            _storesCarts = new ConcurrentDictionary<string, ShoppingCart>();
         }
 
         public void AddItemToShoppingCarts(IDictionary<string, string> itemCodeByChains, double qty)
@@ -29,8 +30,7 @@ namespace PriceCompareLogic.DataProvider
             {
                 var chainDirectory = $@"..\..\..\xmls\{code.Key}";
                 AddItemToCartsByChain(chainDirectory, code.Value, qty);
-            }
-                );
+            });
         }
 
         private void AddItemToCartsByChain(string chainDirectory, string itemCode, double qty)
@@ -51,8 +51,7 @@ namespace PriceCompareLogic.DataProvider
                     _storesCarts.TryAdd(shoppingCartId, cart);
                 }
                 _storesCarts[shoppingCartId].AddItem(item);
-            }
-                );
+            });
         }
     }
 }
