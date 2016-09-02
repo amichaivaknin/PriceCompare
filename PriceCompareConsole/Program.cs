@@ -9,7 +9,7 @@ using PriceCompareLogic.Entities;
 
 namespace PriceCompareConsole
 {
-    class Program
+    internal class Program
     {
         private static void Main()
         {
@@ -23,7 +23,11 @@ namespace PriceCompareConsole
             }
 
             y[1].Qty = 2;
-            x.AddItemToShoppingCart(y[1],y[1].Qty);
+            x.AddItemToShoppingCart(y[1]);
+            y[2].Qty = 5;
+            x.AddItemToShoppingCart(y[2]);
+            y[8].Qty = 5;
+            x.AddItemToShoppingCart(y[8]);
 
             var z=x.ShoppingCarts;
             var orderedEnumerable = z.OrderBy(zi => zi.Total);

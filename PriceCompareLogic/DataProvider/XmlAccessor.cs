@@ -9,13 +9,13 @@ namespace PriceCompareLogic.DataProvider
 {
     internal class XmlAccessor
     {
-
         internal static IDictionary<int, MapItem> ReadMapItems()
         {
             var i = 1;
             var path = new StreamReader(@"..\..\..\xmls\map.xml");
             var document = XDocument.Load(path);
             path.Dispose();
+
             var items = document.Element("Items");
             return (from item in items?.Descendants("Item")
                 select new MapItem
@@ -23,8 +23,9 @@ namespace PriceCompareLogic.DataProvider
                     Id = i++,
                     ItemName = item.Element("ItemName")?.Value,
                     UnitQty = item.Element("UnitQty")?.Value,
-                    GlobalCode = false,
-                    ItemCodeByChains = GetCodeByChain(item.Element("Chains"))
+                    IsGlobalCode =  item.Element("GlobalCode")?.Value=="1",
+                    GlobalItemCode = item.Element("ItemCode")?.Value,
+                    ItemCodeByChains = GetCodeByChain(item.Element("Chains"))             
                 }).ToDictionary(x => x.Id);
         }
 
@@ -76,8 +77,7 @@ namespace PriceCompareLogic.DataProvider
 
         private static IDictionary<string, string> GetCodeByChain(XContainer chains)
         {
-            if (chains == null) throw new ArgumentNullException(nameof(chains));
-            return chains.Elements("Chain")
+            return chains?.Elements("Chain")
                 .ToDictionary(chain => chain.Element("ChainId")?.Value,
                     chain => chain.Element("ItemCode")?.Value);
         }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,9 +25,30 @@ namespace PriceCompareLogic.DataProvider
             _storesCarts = new ConcurrentDictionary<string, ShoppingCart>();
         }
 
-        public void AddItemToShoppingCarts(IDictionary<string, string> itemCodeByChains, double qty)
+        public void AddItem(MapItem item)
         {
-            Parallel.ForEach(itemCodeByChains, code =>
+            if (Math.Abs(item.Qty) <= 0)
+            {
+                return;
+            }
+
+            if (item.IsGlobalCode)
+            {
+                var directoriesEntries = Directory.GetDirectories(@"..\..\..\xmls").AsParallel();
+                foreach (var directory in directoriesEntries)
+                {
+                    AddItemToCartsByChain(directory, item.GlobalItemCode, item.Qty);
+                }
+            }
+            else
+            {
+                AddItemByChainCode(item.ItemCodeByChains.AsParallel(), item.Qty);
+            }
+        }
+
+        private void AddItemByChainCode(ParallelQuery<KeyValuePair<string, string>> itemCodeByChains,double qty)
+        {
+            itemCodeByChains.ForAll(code =>
             {
                 var chainDirectory = $@"..\..\..\xmls\{code.Key}";
                 AddItemToCartsByChain(chainDirectory, code.Value, qty);

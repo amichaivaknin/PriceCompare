@@ -47,13 +47,13 @@
     <Compile Include="Entities\MapItem.cs" />
     <Compile Include="Entities\ShoppingCart.cs" />
     <Compile Include="Entities\Store.cs" />
+    <Compile Include="IPriceCompareManager.cs" />
     <Compile Include="PriceCompareManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataProvider\XmlsEngine.cs" />
+    <Compile Include="Strings\Strings.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Strings\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

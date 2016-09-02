@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using PriceCompareLogic.Entities;
 
 namespace PriceCompareLogic.DataProvider
@@ -9,6 +10,6 @@ namespace PriceCompareLogic.DataProvider
 
         IEnumerable<ShoppingCart> ShoppingCarts { get; }
 
-        void AddItemToShoppingCarts(IDictionary<string, string> itemCodeByChains, double qty);
+        void AddItem(MapItem item);
     }
 }
