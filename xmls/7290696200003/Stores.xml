@@ -33,21 +33,5 @@
       <Latitude />
       <Longitude />
     </Branch>
-    <Branch>
-      <ChainID>7290696200003</ChainID>
-      <SubChainID>001</SubChainID>
-      <StoreID>097</StoreID>
-      <BikoretNo />
-      <StoreType>2</StoreType>
-      <ChainName>ויקטורי</ChainName>
-      <SubChainName>ויקטורי</SubChainName>
-      <StoreName>אינטרנט</StoreName>
-      <Address>www.mysupermarket </Address>
-      <City />
-      <ZIPCode />
-      <LastUpdateDate>27/10/2015 09:54:59</LastUpdateDate>
-      <Latitude />
-      <Longitude />
-    </Branch>
   </Branches>
 </Store>

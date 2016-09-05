@@ -16,7 +16,7 @@ namespace PriceCompareWinFormApp
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ItemsSeletcionForm());
+            Application.Run(new ItemsSelectionWindow());
         }
     }
 }

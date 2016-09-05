@@ -17,21 +17,5 @@
       <Latitude />
       <Longitude />
     </Branch>
-    <Branch>
-      <ChainID>7290661400001</ChainID>
-      <SubChainID>001</SubChainID>
-      <StoreID>072</StoreID>
-      <BikoretNo />
-      <StoreType>1</StoreType>
-      <ChainName>מחסני השוק</ChainName>
-      <SubChainName>מחסני השוק</SubChainName>
-      <StoreName>72 אשדוד הפלמ"ח (ג)</StoreName>
-      <Address>הפלמ"ח 20</Address>
-      <City>אשדוד</City>
-      <ZIPCode>77376</ZIPCode>
-      <LastUpdateDate>22/04/2015 09:33:38</LastUpdateDate>
-      <Latitude />
-      <Longitude />
-    </Branch>
   </Branches>
 </Store>

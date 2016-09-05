@@ -32,7 +32,13 @@ namespace PriceCompareConsole
             var z=x.ShoppingCarts;
             var orderedEnumerable = z.OrderBy(zi => zi.Total);
 
-            Console.ReadLine();
+           
+
+            var q = new UsersManager();
+            var t=q.CheckUserNameAndPassword("1", "1234");
+            t = q.CheckUserNameAndPassword("4", "1234");
+            t = q.AddNewUser("1", "1234");
+            t = q.AddNewUser("4", "1234");
 
         }
     }

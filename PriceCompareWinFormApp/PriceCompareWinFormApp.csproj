@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{834447DC-6350-4F3E-A889-1942754B9B19}</ProjectGuid>
+    <ProjectGuid>{B15E4F21-D950-4327-A732-347490F3E13B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PriceCompareWinFormApp</RootNamespace>
@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ItemsSeletcionForm.cs">
+    <Compile Include="ItemsSelectionWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ItemsSeletcionForm.Designer.cs">
-      <DependentUpon>ItemsSeletcionForm.cs</DependentUpon>
+    <Compile Include="ItemsSelectionWindow.Designer.cs">
+      <DependentUpon>ItemsSelectionWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ItemsSeletcionForm.resx">
-      <DependentUpon>ItemsSeletcionForm.cs</DependentUpon>
+    <EmbeddedResource Include="ItemsSelectionWindow.resx">
+      <DependentUpon>ItemsSelectionWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

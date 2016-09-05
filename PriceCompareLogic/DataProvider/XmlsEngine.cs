@@ -16,8 +16,7 @@ namespace PriceCompareLogic.DataProvider
 
         public IEnumerable<ShoppingCart> ShoppingCarts
         {
-            get { return _storesCarts.Select(storeCart => storeCart.Value).ToList()
-                                                            .OrderBy(l => l.Total); }
+            get { return _storesCarts.Select(storeCart => storeCart.Value).OrderBy(l => l.Total); }
         }
 
         public XmlsEngine()
