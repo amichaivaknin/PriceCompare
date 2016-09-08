@@ -1,26 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-
-namespace PriceCompareLogic.DataProvider
+namespace PriceCompareControl.DataProvider
 {
-    internal class UsersAccessor
+    internal class XmlUsersAccessor
     {
         internal static IEnumerable<XElement> CheckUserName(string userName)
         {
             var document = XDocument.Load(@"..\..\..\xmls\users.xml");
             var users = document.Element("Users");
             return (from user in users?.Descendants("User")
-                        where user.Attribute("userName").Value==userName
-                        select user);
+                    where user.Attribute("userName").Value == userName
+                    select user);
         }
 
-        internal static bool CheckPassword(XElement user,string password)
+        internal static bool CheckPassword(XElement user, string password)
         {
             return user.Attribute("password").Value == password;
         }
@@ -31,8 +29,8 @@ namespace PriceCompareLogic.DataProvider
             document.Element("Users")?.Add(
                      new XElement(
                             "User",
-                             new XAttribute("userName",userName),
-                             new XAttribute("password",password),
+                             new XAttribute("userName", userName),
+                             new XAttribute("password", password),
                              new XElement("ShoppingCarts")
                               )
                             );

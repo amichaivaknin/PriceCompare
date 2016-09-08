@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
-using PriceCompareLogic.Entities;
+using PriceCompareEntities;
+
 
 namespace PriceCompareLogic
 {
@@ -14,5 +15,7 @@ namespace PriceCompareLogic
         void AddItemToShoppingCart(MapItem mapItem);
 
         void AddItemsToShoppingCarts(IEnumerable<MapItem> items, IDictionary<Constrians, List<string>> constrians);
+
+        
     }
 }

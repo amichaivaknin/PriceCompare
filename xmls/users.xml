@@ -1,27 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Users>
   <User userName="1" password="1234">
-    <UserName>1</UserName>
-    <Password>1234</Password>
-    <FirstName>עמיחי</FirstName>
-    <LastName>וקנין</LastName>
-    <ShoppingCarts></ShoppingCarts>
+    <ShoppingLists></ShoppingLists>
   </User>
   <User userName="2" password="1234">
-    <UserName>2</UserName>
-    <Password>1234</Password>
-    <FirstName>איציק</FirstName>
-    <LastName>קופר</LastName>
-    <ShoppingCarts></ShoppingCarts>
+    <ShoppingLists></ShoppingLists>
   </User>
   <User userName="3" password="1234">
-    <UserName>3</UserName>
-    <Password>1234</Password>
-    <FirstName>דורון</FirstName>
-    <LastName>כהן</LastName>
-    <ShoppingCarts></ShoppingCarts>
+    <ShoppingLists></ShoppingLists>
   </User>
   <User userName="4" password="1234">
-    <ShoppingCarts />
+    <ShoppingLists></ShoppingLists>
+  </User>
+  <User userName="5" password="1234">
+    <ShoppingLists></ShoppingLists>
   </User>
 </Users>

@@ -43,22 +43,22 @@
     <Compile Include="DataProvider\IUsersEngine.cs" />
     <Compile Include="DataProvider\UsersAccessor.cs" />
     <Compile Include="DataProvider\UsersEngine.cs" />
-    <Compile Include="Entities\Constrians.cs" />
     <Compile Include="DataProvider\IDataEngine.cs" />
     <Compile Include="DataProvider\XmlAccessor.cs" />
-    <Compile Include="Entities\StoreItem.cs" />
-    <Compile Include="Entities\Item.cs" />
-    <Compile Include="Entities\MapItem.cs" />
-    <Compile Include="Entities\ShoppingCart.cs" />
-    <Compile Include="Entities\Store.cs" />
     <Compile Include="IPriceCompareManager.cs" />
+    <Compile Include="IUsersManager.cs" />
     <Compile Include="PriceCompareManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DataProvider\XmlsEngine.cs" />
     <Compile Include="Strings\Strings.cs" />
     <Compile Include="UsersManager.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\PriceCompareEntities\PriceCompareEntities.csproj">
+      <Project>{3bdc4d7b-fd86-45c7-a2b4-016f6df70eb7}</Project>
+      <Name>PriceCompareEntities</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

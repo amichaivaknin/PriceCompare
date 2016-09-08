@@ -1,29 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace PriceCompareLogic.DataProvider
+namespace PriceCompareControl.DataProvider
 {
-    internal class UsersEngine : IUsersEngine
+    internal class XmlUsersEngine:IUsersEngine
     {
         public bool CheckUserNameAndPassword(string userName, string password)
         {
-            var user = UsersAccessor.CheckUserName(userName);
+            var user = XmlUsersAccessor.CheckUserName(userName);
             var xElements = user as XElement[] ?? user.ToArray();
-            return xElements.Length != 0 && UsersAccessor.CheckPassword(xElements.ToArray()[0], password);
+            return xElements.Length != 0 && XmlUsersAccessor.CheckPassword(xElements.ToArray()[0], password);
         }
 
         public bool AddNewUser(string userName, string password)
         {
-            if (UsersAccessor.CheckUserName(userName).Any())
+            if (XmlUsersAccessor.CheckUserName(userName).Any())
             {
                 return false;
             }
-            UsersAccessor.AddNewUser(userName,password);
+            XmlUsersAccessor.AddNewUser(userName, password);
             return true;
         }
     }

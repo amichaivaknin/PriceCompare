@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E6C1AA2E-A9CE-4BD0-80AB-54C92302476E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{3BDC4D7B-FD86-45C7-A2B4-016F6DF70EB7}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PriceCompareConsole</RootNamespace>
-    <AssemblyName>PriceCompareConsole</AssemblyName>
+    <RootNamespace>PriceCompareEntities</RootNamespace>
+    <AssemblyName>PriceCompareEntities</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,21 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Constrians.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="MapItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PriceCompareControl\PriceCompareControl.csproj">
-      <Project>{c9f8746e-a88d-4705-babd-fc78e08b854e}</Project>
-      <Name>PriceCompareControl</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PriceCompareEntities\PriceCompareEntities.csproj">
-      <Project>{3bdc4d7b-fd86-45c7-a2b4-016f6df70eb7}</Project>
-      <Name>PriceCompareEntities</Name>
-    </ProjectReference>
+    <Compile Include="ShoppingCart.cs" />
+    <Compile Include="Store.cs" />
+    <Compile Include="StoreItem.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

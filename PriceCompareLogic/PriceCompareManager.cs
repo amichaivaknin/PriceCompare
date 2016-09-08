@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using PriceCompareEntities;
 using PriceCompareLogic.DataProvider;
-using PriceCompareLogic.Entities;
+
 
 namespace PriceCompareLogic
 {

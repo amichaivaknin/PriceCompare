@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
-using PriceCompareLogic.Entities;
+using System.Xml.XPath;
+using PriceCompareEntities;
+
 
 namespace PriceCompareLogic.DataProvider
 {
@@ -60,7 +62,7 @@ namespace PriceCompareLogic.DataProvider
             var document = XDocument.Load(path);
             path.Dispose();
 
-            return from branch in document.Descendants("Branch")
+            return (from branch in document.Descendants("Branch")
                 where branch.Element("StoreID")?.Value == storeId
                 select new Store
                 {
@@ -72,8 +74,27 @@ namespace PriceCompareLogic.DataProvider
                     SubChainName = branch.Element("SubChainName")?.Value,
                     StoreName = branch.Element("StoreName")?.Value,
                     Address = branch.Element("Address")?.Value
-                };
+                });
         }
+
+        //internal static bool SaveUserShoppingList(string username,IEnumerable<MapItem> shoppingItems)
+        //{
+        //    var document = XDocument.Load(@"..\..\..\xmls\users.xml");
+        //    document.Element("Users")?.Elements("User").
+        //        Where(user=>user.Attribute("userName").Value==username).FirstOrDefault()?
+                
+
+
+        //    document.Element("User")?.Attribute("userName").Value=username.Add(
+        //             new XElement(
+        //                    "User",
+        //                     new XAttribute("userName", userName),
+        //                     new XAttribute("password", password),
+        //                     new XElement("ShoppingCarts")
+        //                      )
+        //                    );
+        //    document.Save(@"..\..\..\xmls\users.xml");
+        //}
 
         private static IDictionary<string, string> GetCodeByChain(XContainer chains)
         {
@@ -81,5 +102,6 @@ namespace PriceCompareLogic.DataProvider
                 .ToDictionary(chain => chain.Element("ChainId")?.Value,
                     chain => chain.Element("ItemCode")?.Value);
         }
+
     }
 }

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PriceCompareLogic.DataProvider;
+using PriceCompareControl.DataProvider;
 
-namespace PriceCompareLogic
+namespace PriceCompareControl
 {
     public class UsersManager : IUsersManager
     {
-        private readonly IUsersEngine _usersEngine = new UsersEngine();
+        private readonly IUsersEngine _usersEngine = new XmlUsersEngine();
 
         public bool CheckUserNameAndPassword(string userName, string password)
         {

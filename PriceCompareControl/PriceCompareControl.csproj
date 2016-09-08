@@ -4,17 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E6C1AA2E-A9CE-4BD0-80AB-54C92302476E}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{C9F8746E-A88D-4705-BABD-FC78E08B854E}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PriceCompareConsole</RootNamespace>
-    <AssemblyName>PriceCompareConsole</AssemblyName>
+    <RootNamespace>PriceCompareControl</RootNamespace>
+    <AssemblyName>PriceCompareControl</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,19 +40,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="DataProvider\IDataEngine.cs" />
+    <Compile Include="DataProvider\IUsersEngine.cs" />
+    <Compile Include="DataProvider\XmlsDataAccessor.cs" />
+    <Compile Include="DataProvider\XmlsDataEngine.cs" />
+    <Compile Include="DataProvider\XmlUsersAccessor.cs" />
+    <Compile Include="DataProvider\XmlUsersEngine.cs" />
+    <Compile Include="IPriceCompareManager.cs" />
+    <Compile Include="IUsersManager.cs" />
+    <Compile Include="PriceCompareManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strings\Strings.cs" />
+    <Compile Include="UsersManager.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PriceCompareControl\PriceCompareControl.csproj">
-      <Project>{c9f8746e-a88d-4705-babd-fc78e08b854e}</Project>
-      <Name>PriceCompareControl</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PriceCompareEntities\PriceCompareEntities.csproj">
-      <Project>{3bdc4d7b-fd86-45c7-a2b4-016f6df70eb7}</Project>
+      <Project>{3BDC4D7B-FD86-45C7-A2B4-016F6DF70EB7}</Project>
       <Name>PriceCompareEntities</Name>
     </ProjectReference>
   </ItemGroup>

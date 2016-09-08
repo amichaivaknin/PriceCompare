@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PriceCompareLogic.Strings
+namespace PriceCompareControl.Stirngs
 {
     public static class Strings
     {

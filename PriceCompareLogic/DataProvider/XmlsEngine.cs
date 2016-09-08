@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using PriceCompareLogic.Entities;
+using PriceCompareEntities;
 
 namespace PriceCompareLogic.DataProvider
 {
@@ -22,6 +22,30 @@ namespace PriceCompareLogic.DataProvider
         public XmlsEngine()
         {
             _storesCarts = new ConcurrentDictionary<string, ShoppingCart>();
+        }
+
+        public IDictionary<string, StoreItem> GetItemByStores(MapItem item)
+        {
+            var itemDictionary = new ConcurrentDictionary<string,StoreItem>();
+            if (Math.Abs(item.Qty) <= 0)
+            {
+                return null;
+            }
+
+            if (item.IsGlobalCode)
+            {
+                var directoriesEntries = Directory.GetDirectories(@"..\..\..\xmls").AsParallel();
+                foreach (var directoriesEntry in directoriesEntries)
+                {
+                   // to return all the item by chain
+                   // itemDictionary.Concat();
+                }
+            }
+            else
+            {
+                
+            }
+            return itemDictionary;
         }
 
         public void AddItem(MapItem item)
@@ -43,7 +67,7 @@ namespace PriceCompareLogic.DataProvider
             {
                 AddItemByChainCode(item.ItemCodeByChains.AsParallel(), item.Qty);
             }
-        }
+        }     
 
         private void AddItemByChainCode(ParallelQuery<KeyValuePair<string, string>> itemCodeByChains,double qty)
         {
@@ -73,6 +97,11 @@ namespace PriceCompareLogic.DataProvider
                 }
                 _storesCarts[shoppingCartId].AddItem(item);
             });
+        }
+
+        public bool SaveUserShoppingList(string username, IEnumerable<MapItem> shoppingList)
+        {
+            throw new NotImplementedException();
         }
     }
 }

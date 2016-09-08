@@ -46,16 +46,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ItemsSelectionWindow.cs">
+    <Compile Include="ItemsSelectionFrom.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ItemsSelectionWindow.Designer.cs">
-      <DependentUpon>ItemsSelectionWindow.cs</DependentUpon>
+    <Compile Include="ItemsSelectionFrom.Designer.cs">
+      <DependentUpon>ItemsSelectionFrom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogInForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogInForm.Designer.cs">
+      <DependentUpon>LogInForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ItemsSelectionWindow.resx">
-      <DependentUpon>ItemsSelectionWindow.cs</DependentUpon>
+    <EmbeddedResource Include="ItemsSelectionFrom.resx">
+      <DependentUpon>ItemsSelectionFrom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogInForm.resx">
+      <DependentUpon>LogInForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -80,9 +89,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PriceCompareLogic\PriceCompareLogic.csproj">
-      <Project>{52547518-7a6b-4a35-9105-e254f0411836}</Project>
-      <Name>PriceCompareLogic</Name>
+    <ProjectReference Include="..\PriceCompareControl\PriceCompareControl.csproj">
+      <Project>{c9f8746e-a88d-4705-babd-fc78e08b854e}</Project>
+      <Name>PriceCompareControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PriceCompareEntities\PriceCompareEntities.csproj">
+      <Project>{3bdc4d7b-fd86-45c7-a2b4-016f6df70eb7}</Project>
+      <Name>PriceCompareEntities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
