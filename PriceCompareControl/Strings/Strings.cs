@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PriceCompareControl.Stirngs
+﻿namespace PriceCompareControl.Strings
 {
     public static class Strings
     {
@@ -24,7 +18,22 @@ namespace PriceCompareControl.Stirngs
         public static string NewUser { get; } = "User added successfully";
         //End of LoginForm
 
+        //ItemsSelectionForm
         public static string ItemSelectionWindowName { get; } = "Price Compare App";
         public static string UserNameLabel { get; } = "Hello ";
+        public static string SelectButton { get; } = "Start Compare";
+        public static string UpdateButton { get; } = "Update stores";
+        //End Of ItemsSelectionForm
+
+
+        public static string StoreWindowName { get; } = "Store Window";
+        public static string ChainNameLabel { get; } = "Chain Name:";
+        public static string SubChainNameLabel { get; } = "Sub Chain Name:";
+        public static string StoreNameLabel { get; } = "Store Name:";
+        public static string AddressLabel { get; } = "Address:";
+        public static string CityLabel { get; } = "City:";
+        public static string MinLabel { get; } = "3 cheapes items";
+        public static string MaxLabel { get; } = "3 most expansive items";
+        public static string AllItems { get; } = "All items in shopping cart";
     }
 }

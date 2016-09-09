@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCompareConsole", "PriceCompareConsole\PriceCompareConsole.csproj", "{E6C1AA2E-A9CE-4BD0-80AB-54C92302476E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCompareWinFormApp", "PriceCompareWinFormApp\PriceCompareWinFormApp.csproj", "{B15E4F21-D950-4327-A732-347490F3E13B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PriceCompareEntities", "PriceCompareEntities\PriceCompareEntities.csproj", "{3BDC4D7B-FD86-45C7-A2B4-016F6DF70EB7}"
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E6C1AA2E-A9CE-4BD0-80AB-54C92302476E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6C1AA2E-A9CE-4BD0-80AB-54C92302476E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6C1AA2E-A9CE-4BD0-80AB-54C92302476E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6C1AA2E-A9CE-4BD0-80AB-54C92302476E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B15E4F21-D950-4327-A732-347490F3E13B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B15E4F21-D950-4327-A732-347490F3E13B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B15E4F21-D950-4327-A732-347490F3E13B}.Release|Any CPU.ActiveCfg = Release|Any CPU

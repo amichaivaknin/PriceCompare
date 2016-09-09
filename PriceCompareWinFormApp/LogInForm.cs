@@ -2,8 +2,7 @@
 using System.ComponentModel;
 using System.Windows.Forms;
 using PriceCompareControl;
-using PriceCompareControl.Stirngs;
-
+using PriceCompareControl.Strings;
 
 namespace PriceCompareWinFormApp
 {
@@ -98,7 +97,7 @@ namespace PriceCompareWinFormApp
             e.Result = _usersManager.AddNewUser(data?[0], data?[1]);
         }
 
-        private void NewUserWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private static void NewUserWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             var result = (bool)e.Result;
             MessageBox.Show(result ? Strings.NewUser : Strings.UserAllreadyExists);

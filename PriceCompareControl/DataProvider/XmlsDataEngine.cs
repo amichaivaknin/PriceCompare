@@ -58,7 +58,9 @@ namespace PriceCompareControl.DataProvider
             fileEntries.ForAll(store =>
             {
                 var items = XmlsDataAccessor.GetItem(store, globalItemCode);
-                var item = items.ToList()[0];
+                var storeItems = items as IList<StoreItem> ?? items.ToList();
+                if (!storeItems.Any()) return;
+                var item = storeItems[0];
                 item.Qty = qty;
                 var storeId = $"{item.ChainId}{item.SubChainId}{item.StoreId}";
                 itemByStores.TryAdd(storeId, item);

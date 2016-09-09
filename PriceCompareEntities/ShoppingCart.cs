@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.CodeDom;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace PriceCompareEntities
@@ -8,26 +9,36 @@ namespace PriceCompareEntities
         private readonly List<StoreItem> _selectedItems;
         private List<StoreItem> _threeExpensiveItems;
         private List<StoreItem> _threeCheapestItems;
-        public string ShoppingCartId { get; }
-        public string ChainName { get; }
-        public string StoreName { get; }
-        public string Address { get; }
-        public string City { get; }
+        public string ShoppingCartId { get; set; }
+        public string ChainId { get; }
+        public string SubChainId { get; }
+        public string StoreId { get; }
+        public string ChainName { get; set; }
+        public string StoreName { get; set; }
+        public string Address { get; set; }
+        public string City { get; set; }
         public IEnumerable<StoreItem> Items => _selectedItems;
         public IEnumerable<StoreItem> ThreeMostExpensiveItems => _threeExpensiveItems;
         public IEnumerable<StoreItem> ThreeCheapestItems => _threeCheapestItems;
 
-        public ShoppingCart(string shoppingCartId, string chainName, string storeName, string address, string city)
+        public ShoppingCart(string shoppingCartId)
         {
             ShoppingCartId = shoppingCartId;
-            ChainName = chainName;
-            StoreName = storeName;
-            Address = address;
-            City = city;
             _selectedItems = new List<StoreItem>();
             _threeCheapestItems = new List<StoreItem>();
             _threeExpensiveItems = new List<StoreItem>();
-        }      
+        }
+
+        public ShoppingCart(string shoppingCartId, string chainId, string subChainId, string storeId)
+        {
+            ShoppingCartId = shoppingCartId;
+            ChainId = chainId;
+            SubChainId = subChainId;
+            StoreId = storeId;
+            _selectedItems = new List<StoreItem>();
+            _threeCheapestItems = new List<StoreItem>();
+            _threeExpensiveItems = new List<StoreItem>();
+        }
 
         public double Total => _selectedItems.Sum(chainItem => chainItem.TotalPrice);
 

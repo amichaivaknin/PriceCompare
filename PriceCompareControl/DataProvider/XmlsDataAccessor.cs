@@ -80,7 +80,8 @@ namespace PriceCompareControl.DataProvider
                         ChainName = branch.Element("ChainName")?.Value,
                         SubChainName = branch.Element("SubChainName")?.Value,
                         StoreName = branch.Element("StoreName")?.Value,
-                        Address = branch.Element("Address")?.Value
+                        Address = branch.Element("Address")?.Value,
+                        City = branch.Element("City")?.Value
                     });
         }
 
