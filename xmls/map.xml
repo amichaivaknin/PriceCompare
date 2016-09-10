@@ -4,6 +4,7 @@
   <ItemName>מלפפון</ItemName>
   <UnitQty>ק"ג</UnitQty>
   <GlobalCode>0</GlobalCode>
+  <BisWeighted>1</BisWeighted>
   <Chains>
    <Chain>
    <ChainId>7290661400001</ChainId>
@@ -23,6 +24,7 @@
   <ItemName>מלון</ItemName>
   <UnitQty>ק"ג</UnitQty>
   <GlobalCode>0</GlobalCode>
+  <BisWeighted>1</BisWeighted>
   <Chains>
    <Chain>
    <ChainId>7290661400001</ChainId>
@@ -42,6 +44,7 @@
   <ItemName>פלפל חריף</ItemName>
   <UnitQty>ק"ג</UnitQty>
   <GlobalCode>0</GlobalCode>
+  <BisWeighted>1</BisWeighted>
   <Chains>
    <Chain>
    <ChainId>7290661400001</ChainId>
@@ -61,6 +64,7 @@
   <ItemName>עגבניות שרי</ItemName>
   <UnitQty>ק"ג</UnitQty>
   <GlobalCode>0</GlobalCode>
+  <BisWeighted>1</BisWeighted>
   <Chains>
    <Chain>
    <ChainId>7290661400001</ChainId>
@@ -80,6 +84,7 @@
   <ItemName>פלפל צהוב</ItemName>
   <UnitQty>ק"ג</UnitQty>
   <GlobalCode>0</GlobalCode>
+  <BisWeighted>1</BisWeighted>
    <Chains>
    <Chain>
    <ChainId>7290661400001</ChainId>
@@ -99,30 +104,35 @@
   <ItemName>שוקו בבקבוק קטן תנובה 340 מל</ItemName>
   <UnitQty>יח</UnitQty>
   <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
   <ItemCode>7290004136130</ItemCode>  
 </Item>
 <Item>
   <ItemName>משקה חלב אייס קפה 2% תנובה 340 מל</ItemName>
   <UnitQty>יח</UnitQty>
   <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
   <ItemCode>7290004136154</ItemCode>  
 </Item>
 <Item>
   <ItemName>נקה -7שמפו צבוע כתום</ItemName>
   <UnitQty>יח</UnitQty>
   <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
   <ItemCode>7290004146986</ItemCode>  
 </Item>
 <Item>
 <ItemName>גבינה עמק לייט 9% תנובה 400 גרם</ItemName>
   <UnitQty>יח</UnitQty>
   <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
   <ItemCode>7290004137311</ItemCode>  
 </Item>
 <Item>
 <ItemName>גבינת לאבנה אסלית על בסיס יוגורט 5% פירא</ItemName>
   <UnitQty>יח</UnitQty>
   <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
   <ItemCode>7290004137809</ItemCode>  
 </Item>
 </Items>

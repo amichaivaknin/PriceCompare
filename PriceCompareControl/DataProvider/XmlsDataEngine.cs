@@ -3,19 +3,17 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PriceCompareEntities;
 
 namespace PriceCompareControl.DataProvider
 {
-    internal class XmlsDataEngine:IDataEngine
+    internal class XmlsDataEngine : IDataEngine
     {
         public IDictionary<int, MapItem> MapItems => XmlsDataAccessor.ReadMapItems();
 
         public IDictionary<string, StoreItem> GetItemByStores(MapItem mapItem)
         {
-            var itemByStores=new ConcurrentDictionary<string, StoreItem>();
+            var itemByStores = new ConcurrentDictionary<string, StoreItem>();
             if (Math.Abs(mapItem.Qty) <= 0)
             {
                 return null;
@@ -24,8 +22,8 @@ namespace PriceCompareControl.DataProvider
             if (mapItem.IsGlobalCode)
             {
                 var directoriesEntries = Directory.GetDirectories(@"..\..\..\xmls").AsParallel();
-                foreach (var store in directoriesEntries.SelectMany(directory => 
-                                      GetItemByChain(directory, mapItem.GlobalItemCode, mapItem.Qty).AsParallel()))
+                foreach (var store in directoriesEntries.SelectMany(directory =>
+                    GetItemByChain(directory, mapItem.GlobalItemCode, mapItem.Qty).AsParallel()))
                 {
                     itemByStores.TryAdd(store.Key, store.Value);
                 }
@@ -33,11 +31,14 @@ namespace PriceCompareControl.DataProvider
             else
             {
                 var chainsCodes = mapItem.ItemCodeByChains.AsParallel();
-                foreach (var store in from chainCode in chainsCodes let chainDirectory = $@"..\..\..\xmls\{chainCode.Key}"
-                                      select GetItemByChain(chainDirectory, chainCode.Value, mapItem.Qty).AsParallel() 
-                                      into chainStores from store in chainStores select store)
+                foreach (var store in from chainCode in chainsCodes
+                    let chainDirectory = $@"..\..\..\xmls\{chainCode.Key}"
+                    select GetItemByChain(chainDirectory, chainCode.Value, mapItem.Qty).AsParallel()
+                    into chainStores
+                    from store in chainStores
+                    select store)
                 {
-                    itemByStores.TryAdd(store.Key,store.Value);
+                    itemByStores.TryAdd(store.Key, store.Value);
                 }
             }
 
@@ -50,7 +51,8 @@ namespace PriceCompareControl.DataProvider
             return XmlsDataAccessor.GetStoreInfo(chainDirectory, storeid).ToList()[0];
         }
 
-        private static ConcurrentDictionary<string, StoreItem> GetItemByChain(string directory, string globalItemCode, double qty)
+        private static ConcurrentDictionary<string, StoreItem> GetItemByChain(string directory, string globalItemCode,
+            double qty)
         {
             var fileEntries = Directory.GetFiles($@"{directory}\prices").AsParallel();
             var itemByStores = new ConcurrentDictionary<string, StoreItem>();
@@ -65,11 +67,8 @@ namespace PriceCompareControl.DataProvider
                 var storeId = $"{item.ChainId}{item.SubChainId}{item.StoreId}";
                 itemByStores.TryAdd(storeId, item);
             }
-            );
-           return itemByStores;
+                );
+            return itemByStores;
         }
-
-
-
     }
 }

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Xml.Linq;
 
 namespace PriceCompareControl.DataProvider
 {
-    internal class XmlUsersEngine:IUsersEngine
+    internal class XmlUsersEngine : IUsersEngine
     {
         public bool CheckUserNameAndPassword(string userName, string password)
         {

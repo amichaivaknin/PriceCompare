@@ -23,6 +23,8 @@
         public static string UserNameLabel { get; } = "Hello ";
         public static string SelectButton { get; } = "Start Compare";
         public static string UpdateButton { get; } = "Update stores";
+        public static string InvalidQty { get; } = "You try to insert invalid Qty in item no:";
+        public static string ExelButton { get; } = "Export to Exel";
         //End Of ItemsSelectionForm
 
 

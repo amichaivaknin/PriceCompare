@@ -14,5 +14,7 @@ namespace PriceCompareControl
         IDictionary<string, StoreItem> GetItemByStores(MapItem mapItem);
 
         Store GetStoreInfo(string chainId, string storeid);
+
+        bool ToExelFile(List<ShoppingCart> storesList);
     }
 }

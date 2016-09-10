@@ -47,9 +47,13 @@
             this.ChainCB = new System.Windows.Forms.ComboBox();
             this.updateButton = new System.Windows.Forms.Button();
             this.UpdateWorker = new System.ComponentModel.BackgroundWorker();
+            this.storesGB = new System.Windows.Forms.GroupBox();
+            this.exelButton = new System.Windows.Forms.Button();
+            this.ExelWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.itemsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceImage)).BeginInit();
+            this.storesGB.SuspendLayout();
             this.SuspendLayout();
             // 
             // UserNameLabel
@@ -139,7 +143,7 @@
             this.storeName,
             this.total,
             this.storeInfo});
-            this.storesGrid.Location = new System.Drawing.Point(476, 87);
+            this.storesGrid.Location = new System.Drawing.Point(6, 58);
             this.storesGrid.Name = "storesGrid";
             this.storesGrid.Size = new System.Drawing.Size(340, 150);
             this.storesGrid.TabIndex = 3;
@@ -150,22 +154,27 @@
             this.storeName.HeaderText = "Store info";
             this.storeName.Name = "storeName";
             this.storeName.ReadOnly = true;
+            this.storeName.Width = 150;
             // 
             // total
             // 
+            this.total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.total.HeaderText = "Total";
             this.total.Name = "total";
             this.total.ReadOnly = true;
+            this.total.Width = 56;
             // 
             // storeInfo
             // 
+            this.storeInfo.FillWeight = 70F;
             this.storeInfo.HeaderText = "Store info";
             this.storeInfo.Name = "storeInfo";
             this.storeInfo.ReadOnly = true;
+            this.storeInfo.Width = 70;
             // 
             // priceImage
             // 
-            this.priceImage.Location = new System.Drawing.Point(487, 87);
+            this.priceImage.Location = new System.Drawing.Point(483, 87);
             this.priceImage.Name = "priceImage";
             this.priceImage.Size = new System.Drawing.Size(315, 267);
             this.priceImage.TabIndex = 4;
@@ -174,7 +183,7 @@
             // citiesCB
             // 
             this.citiesCB.FormattingEnabled = true;
-            this.citiesCB.Location = new System.Drawing.Point(477, 52);
+            this.citiesCB.Location = new System.Drawing.Point(6, 19);
             this.citiesCB.Name = "citiesCB";
             this.citiesCB.Size = new System.Drawing.Size(121, 21);
             this.citiesCB.TabIndex = 5;
@@ -182,14 +191,14 @@
             // ChainCB
             // 
             this.ChainCB.FormattingEnabled = true;
-            this.ChainCB.Location = new System.Drawing.Point(610, 52);
+            this.ChainCB.Location = new System.Drawing.Point(147, 19);
             this.ChainCB.Name = "ChainCB";
             this.ChainCB.Size = new System.Drawing.Size(121, 21);
             this.ChainCB.TabIndex = 6;
             // 
             // updateButton
             // 
-            this.updateButton.Location = new System.Drawing.Point(742, 52);
+            this.updateButton.Location = new System.Drawing.Point(278, 19);
             this.updateButton.Name = "updateButton";
             this.updateButton.Size = new System.Drawing.Size(75, 23);
             this.updateButton.TabIndex = 7;
@@ -201,17 +210,41 @@
             this.UpdateWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.UpdateWorker_DoWork);
             this.UpdateWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.UpdateWorker_RunWorkerCompleted);
             // 
+            // storesGB
+            // 
+            this.storesGB.Controls.Add(this.exelButton);
+            this.storesGB.Controls.Add(this.storesGrid);
+            this.storesGB.Controls.Add(this.updateButton);
+            this.storesGB.Controls.Add(this.citiesCB);
+            this.storesGB.Controls.Add(this.ChainCB);
+            this.storesGB.Location = new System.Drawing.Point(463, 52);
+            this.storesGB.Name = "storesGB";
+            this.storesGB.Size = new System.Drawing.Size(372, 315);
+            this.storesGB.TabIndex = 8;
+            this.storesGB.TabStop = false;
+            // 
+            // exelButton
+            // 
+            this.exelButton.Location = new System.Drawing.Point(271, 235);
+            this.exelButton.Name = "exelButton";
+            this.exelButton.Size = new System.Drawing.Size(75, 23);
+            this.exelButton.TabIndex = 8;
+            this.exelButton.UseVisualStyleBackColor = true;
+            this.exelButton.Click += new System.EventHandler(this.exelButton_Click);
+            // 
+            // ExelWorker
+            // 
+            this.ExelWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ExelWorker_DoWork);
+            this.ExelWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.ExelWorker_RunWorkerCompleted);
+            // 
             // ItemsSelectionFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(828, 427);
-            this.Controls.Add(this.updateButton);
-            this.Controls.Add(this.ChainCB);
-            this.Controls.Add(this.citiesCB);
+            this.Controls.Add(this.storesGB);
             this.Controls.Add(this.priceImage);
-            this.Controls.Add(this.storesGrid);
             this.Controls.Add(this.selectItemsButton);
             this.Controls.Add(this.itemsGrid);
             this.Controls.Add(this.UserNameLabel);
@@ -220,6 +253,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.itemsGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.storesGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceImage)).EndInit();
+            this.storesGB.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,13 +272,16 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn selectItem;
         private System.ComponentModel.BackgroundWorker AddItemsWorker;
         private System.Windows.Forms.DataGridView storesGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn storeName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn total;
-        private System.Windows.Forms.DataGridViewButtonColumn storeInfo;
         private System.Windows.Forms.PictureBox priceImage;
         private System.Windows.Forms.ComboBox citiesCB;
         private System.Windows.Forms.ComboBox ChainCB;
         private System.Windows.Forms.Button updateButton;
         private System.ComponentModel.BackgroundWorker UpdateWorker;
+        private System.Windows.Forms.DataGridViewTextBoxColumn storeName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.DataGridViewButtonColumn storeInfo;
+        private System.Windows.Forms.GroupBox storesGB;
+        private System.Windows.Forms.Button exelButton;
+        private System.ComponentModel.BackgroundWorker ExelWorker;
     }
 }

@@ -17,6 +17,7 @@ namespace PriceCompareWinFormApp
         private readonly string _username;
         private Dictionary<int, MapItem> _menuItems;
         private Dictionary<int, ShoppingCart> _selectedStore;
+        private Dictionary<int, ShoppingCart> _displayStore;
 
         public ItemsSelectionFrom(string username)
         {
@@ -34,28 +35,44 @@ namespace PriceCompareWinFormApp
             selectItemsButton.Text = Strings.SelectButton;
             priceImage.Image = Image.FromFile(@"..\..\..\priceImage.png");
             updateButton.Text = Strings.UpdateButton;
-            storesGrid.Visible = false;
-            ChainCB.Visible = false;
-            citiesCB.Visible = false;
-            updateButton.Visible = false;
+            exelButton.Text = Strings.ExelButton;
+            storesGB.Visible = false;
         }
 
         private void selectItems_Click(object sender, EventArgs e)
         {
-            selectItemsButton.Visible = false;
-            storesGrid.Visible = false;
-            ChainCB.Items.Clear();
-            citiesCB.Items.Clear();
-            var selectedItems = new List<MapItem>();
-            foreach (DataGridViewRow selectRow in itemsGrid.Rows)
+            var id = 0;
+            try
             {
-                var checkCell = (DataGridViewCheckBoxCell) selectRow.Cells["selectItem"];
-                if (!(checkCell.Value as bool? ?? false)) continue;
-                var id = int.Parse(selectRow.Cells["No"].Value.ToString());
-                _menuItems[id].Qty = double.Parse(selectRow.Cells["qty"].Value.ToString());
-                selectedItems.Add(_menuItems[id]);
+                selectItemsButton.Visible = false;
+                storesGB.Visible = false;
+                ChainCB.Items.Clear();
+                citiesCB.Items.Clear();
+                var selectedItems = new List<MapItem>();
+                foreach (var selectRow in from DataGridViewRow selectRow in itemsGrid.Rows
+                                          let checkCell = (DataGridViewCheckBoxCell)selectRow.Cells["selectItem"]
+                                          where checkCell.Value as bool? ?? false select selectRow)
+                {
+                    id = int.Parse(selectRow.Cells["No"].Value.ToString());
+                    if (_menuItems[id].BisWeighted)
+                    {
+                        _menuItems[id].Qty = double.Parse(selectRow.Cells["qty"].Value.ToString());
+                    }
+                    else
+                    {
+                        _menuItems[id].Qty = int.Parse(selectRow.Cells["qty"].Value.ToString());
+                    }
+
+                    selectedItems.Add(_menuItems[id]);
+                }
+                AddItemsWorker.RunWorkerAsync(selectedItems);
             }
-            AddItemsWorker.RunWorkerAsync(selectedItems);
+            catch (Exception)
+            {
+                MessageBox.Show($"{Strings.InvalidQty} {id}");
+                selectItemsButton.Visible = true;
+            }
+            
         }
 
         private void updateButton_Click(object sender, EventArgs e)
@@ -66,13 +83,19 @@ namespace PriceCompareWinFormApp
             UpdateWorker.RunWorkerAsync(update);
         }
 
+        private void exelButton_Click(object sender, EventArgs e)
+        {
+            exelButton.Visible = false;
+            ExelWorker.RunWorkerAsync(_displayStore.Values.ToList());
+        }
+
         private void StoresGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex != 2 || e.RowIndex < 0)
             {
                 return;
             }
-            var storeForm = new StoreForm(_selectedStore[e.RowIndex]);
+            var storeForm = new StoreForm(_displayStore[e.RowIndex]);
             storeForm.Show();
         }
 
@@ -141,6 +164,7 @@ namespace PriceCompareWinFormApp
         {
             var i = 0;
             _selectedStore = new Dictionary<int, ShoppingCart>();
+            _displayStore = new Dictionary<int, ShoppingCart>();
             var cities = new List<string> {"הכל"};
             var chains = new List<string> {"הכל"};
             storesGrid.Rows.Clear();
@@ -155,16 +179,13 @@ namespace PriceCompareWinFormApp
                 {
                     chains.Add(store.ChainName);
                 }
-                _selectedStore.Add(i++, store);
+                _selectedStore.Add(i, store);
+                _displayStore.Add(i++, store);
                 storesGrid.Rows.Add($"{store.ChainName} {store.StoreName}", store.Total, "Store info");
             }
             ChainCB.Items.AddRange(chains.ToArray());
             citiesCB.Items.AddRange(cities.ToArray());
-            storesGrid.Visible = true;
-            ChainCB.Visible = true;
-            citiesCB.Visible = true;
-            updateButton.Visible = true;
-
+            storesGB.Visible = true;
             priceImage.Visible = false;
             _storesCarts.Clear();
             selectItemsButton.Visible = true;
@@ -199,14 +220,27 @@ namespace PriceCompareWinFormApp
                 return;
             }
 
-            var sd = (Dictionary<int, ShoppingCart>) e.Result;
+            _displayStore = (Dictionary<int, ShoppingCart>) e.Result;
 
             storesGrid.Rows.Clear();
             storesGrid.Refresh();
-            foreach (var store in sd.Values)
+            foreach (var store in _displayStore.Values)
             {
                 storesGrid.Rows.Add($"{store.ChainName} {store.StoreName}", store.Total, "Store info");
             }
+        }
+
+        private void ExelWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var storesList = (List<ShoppingCart>)e.Argument;
+            e.Result=_priceCompare.ToExelFile(storesList);
+        }
+
+        private void ExelWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            exelButton.Visible = true;
+            var fl = (bool) e.Result;
+            MessageBox.Show(fl ? @"Exel file added successfully" : @"File Export Failed");
         }
     }
 }
