@@ -243,7 +243,7 @@
             // 
             this.saveShoppingListButton.Location = new System.Drawing.Point(7, 235);
             this.saveShoppingListButton.Name = "saveShoppingListButton";
-            this.saveShoppingListButton.Size = new System.Drawing.Size(104, 23);
+            this.saveShoppingListButton.Size = new System.Drawing.Size(201, 23);
             this.saveShoppingListButton.TabIndex = 9;
             this.saveShoppingListButton.UseVisualStyleBackColor = true;
             this.saveShoppingListButton.Click += new System.EventHandler(this.saveShoppingListButton_Click);
