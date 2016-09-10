@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml.Linq;
@@ -81,6 +82,58 @@ namespace PriceCompareControl.DataProvider
                     Address = branch.Element("Address")?.Value,
                     City = branch.Element("City")?.Value
                 };
+        }
+
+        internal static void AddUserShoppingList(string userName,List<MapItem> itemsList)
+        {
+            var shoppingList = new XElement("ShoppingList");
+                foreach (var item in itemsList)
+                {
+                    shoppingList.Add(
+                        new XElement(
+                            "Item",
+                            new XAttribute("ItemName", item.ItemName),
+                            new XAttribute("UnitQty", item.UnitQty),
+                            new XAttribute("Qty", item.Qty)
+                            ));
+                }
+         
+            var document = XDocument.Load(@"..\..\..\xmls\users.xml");
+            foreach (var user in document.Elements("Users").Elements("User")
+                    .Where(user => user.Attribute("userName").Value == userName))
+                    {
+                     user.Element("ShoppingLists")?.Add(shoppingList);
+                    }
+            document.Save(@"..\..\..\xmls\users.xml");      
+        }
+
+        internal static IEnumerable<IEnumerable<ShoppingListItem>> GetAllShoppingList(string userName)
+        {
+            var document = XDocument.Load(@"..\..\..\xmls\users.xml");
+            var users = document.Element("Users");
+            var userShoppingLists = new List<List<ShoppingListItem>>();
+            foreach (var user in users?.Descendants("User"))
+            {
+                if (user.Attribute("userName").Value == userName)
+                {
+                    var shoppingLists = user.Element("ShoppingLists");
+                    foreach (var shoppingList in shoppingLists?.Descendants("ShoppingList"))
+                    {
+                        var userShoppingList = new List<ShoppingListItem>();
+                        foreach (var item in shoppingList.Descendants("Item"))
+                        {
+                            userShoppingList.Add(new ShoppingListItem
+                            {
+                                ItemName = item.Attribute("ItemName").Value,
+                                UnitQty = item.Attribute("UnitQty").Value,
+                                Qty = item.Attribute("Qty").Value
+                            });
+                        }
+                        userShoppingLists.Add(userShoppingList);
+                    }
+                }
+            }
+            return userShoppingLists;
         }
     }
 }

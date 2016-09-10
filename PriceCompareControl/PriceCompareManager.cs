@@ -69,5 +69,17 @@ namespace PriceCompareControl
                 return false;
             }     
         }
+
+        public void AddUserShoppingList(string userName, List<MapItem> itemsList)
+        {
+            IDataEngine dataEngine = new XmlsDataEngine();
+            dataEngine.AddUserShoppingList(userName,itemsList);
+        }
+
+        public IEnumerable<IEnumerable<ShoppingListItem>> GetAllShoppingList(string userName)
+        {
+            IDataEngine dataEngine = new XmlsDataEngine();
+            return dataEngine.GetAllShoppingList(userName);
+        }
     }
 }

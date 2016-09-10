@@ -51,6 +51,16 @@ namespace PriceCompareControl.DataProvider
             return XmlsDataAccessor.GetStoreInfo(chainDirectory, storeid).ToList()[0];
         }
 
+        public void AddUserShoppingList(string userName, List<MapItem> itemsList)
+        {
+            XmlsDataAccessor.AddUserShoppingList(userName,itemsList);
+        }
+
+        public IEnumerable<IEnumerable<ShoppingListItem>> GetAllShoppingList(string userName)
+        {
+            return XmlsDataAccessor.GetAllShoppingList(userName);
+        }
+
         private static ConcurrentDictionary<string, StoreItem> GetItemByChain(string directory, string globalItemCode,
             double qty)
         {

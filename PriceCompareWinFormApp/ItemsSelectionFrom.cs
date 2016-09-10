@@ -18,6 +18,7 @@ namespace PriceCompareWinFormApp
         private Dictionary<int, MapItem> _menuItems;
         private Dictionary<int, ShoppingCart> _selectedStore;
         private Dictionary<int, ShoppingCart> _displayStore;
+        private List<MapItem> _selectedItems;
 
         public ItemsSelectionFrom(string username)
         {
@@ -36,6 +37,8 @@ namespace PriceCompareWinFormApp
             priceImage.Image = Image.FromFile(@"..\..\..\priceImage.png");
             updateButton.Text = Strings.UpdateButton;
             exelButton.Text = Strings.ExelButton;
+            saveShoppingListButton.Text = Strings.SaveShoppingListButton;
+            PreviousButton.Text = Strings.PreviousButton;
             storesGB.Visible = false;
         }
 
@@ -46,6 +49,8 @@ namespace PriceCompareWinFormApp
             {
                 selectItemsButton.Visible = false;
                 storesGB.Visible = false;
+                priceImage.Visible = true;
+                saveShoppingListButton.Visible = true;
                 ChainCB.Items.Clear();
                 citiesCB.Items.Clear();
                 var selectedItems = new List<MapItem>();
@@ -62,10 +67,14 @@ namespace PriceCompareWinFormApp
                     {
                         _menuItems[id].Qty = int.Parse(selectRow.Cells["qty"].Value.ToString());
                     }
-
+                    if (Math.Abs(_menuItems[id].Qty) <= 0)
+                    {
+                        throw new Exception("zero");
+                    }
                     selectedItems.Add(_menuItems[id]);
                 }
                 AddItemsWorker.RunWorkerAsync(selectedItems);
+                _selectedItems = selectedItems;
             }
             catch (Exception)
             {
@@ -87,6 +96,17 @@ namespace PriceCompareWinFormApp
         {
             exelButton.Visible = false;
             ExelWorker.RunWorkerAsync(_displayStore.Values.ToList());
+        }
+
+        private void saveShoppingListButton_Click(object sender, EventArgs e)
+        {
+            saveShoppingListButton.Visible = false;
+            SaveShoppingWorker.RunWorkerAsync();
+        }
+
+        private void PreviousButton_Click(object sender, EventArgs e)
+        {
+            WatchPreviusWorker.RunWorkerAsync();
         }
 
         private void StoresGrid_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -241,6 +261,36 @@ namespace PriceCompareWinFormApp
             exelButton.Visible = true;
             var fl = (bool) e.Result;
             MessageBox.Show(fl ? @"Exel file added successfully" : @"File Export Failed");
+        }
+
+        private void SaveShoppingWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            _priceCompare.AddUserShoppingList(_username, _selectedItems);
+        }
+
+        private void SaveShoppingWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            MessageBox.Show(Strings.SaveShoppingListMessage);
+        }
+
+        private void WatchPreviusWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            var lists = _priceCompare.GetAllShoppingList(_username).ToList();
+            var listsString = "";
+            var i = 1;
+            foreach (var list in lists.Where(list => list == null || list.Any()))
+            {
+                listsString = $"{listsString} Shopping list no {i}\n";
+                listsString = list.Aggregate(listsString, (current, item) => $"{current} {item.ItemName} {item.UnitQty} {item.Qty}\n");
+                i++;
+            }
+            e.Result=listsString;
+        }
+
+        private void WatchPreviusWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+           var listsString = (string) e.Result;
+            MessageBox.Show(listsString);
         }
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using PriceCompareEntities;
 
 namespace PriceCompareControl
@@ -16,5 +12,9 @@ namespace PriceCompareControl
         Store GetStoreInfo(string chainId, string storeid);
 
         bool ToExelFile(List<ShoppingCart> storesList);
+
+        void AddUserShoppingList(string userName, List<MapItem> itemsList);
+
+        IEnumerable<IEnumerable<ShoppingListItem>> GetAllShoppingList(string userName);
     }
 }

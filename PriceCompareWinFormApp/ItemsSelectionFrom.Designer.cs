@@ -50,6 +50,10 @@
             this.storesGB = new System.Windows.Forms.GroupBox();
             this.exelButton = new System.Windows.Forms.Button();
             this.ExelWorker = new System.ComponentModel.BackgroundWorker();
+            this.saveShoppingListButton = new System.Windows.Forms.Button();
+            this.PreviousButton = new System.Windows.Forms.Button();
+            this.SaveShoppingWorker = new System.ComponentModel.BackgroundWorker();
+            this.WatchPreviusWorker = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.itemsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceImage)).BeginInit();
@@ -213,6 +217,7 @@
             // storesGB
             // 
             this.storesGB.Controls.Add(this.exelButton);
+            this.storesGB.Controls.Add(this.saveShoppingListButton);
             this.storesGB.Controls.Add(this.storesGrid);
             this.storesGB.Controls.Add(this.updateButton);
             this.storesGB.Controls.Add(this.citiesCB);
@@ -225,9 +230,9 @@
             // 
             // exelButton
             // 
-            this.exelButton.Location = new System.Drawing.Point(271, 235);
+            this.exelButton.Location = new System.Drawing.Point(228, 235);
             this.exelButton.Name = "exelButton";
-            this.exelButton.Size = new System.Drawing.Size(75, 23);
+            this.exelButton.Size = new System.Drawing.Size(118, 23);
             this.exelButton.TabIndex = 8;
             this.exelButton.UseVisualStyleBackColor = true;
             this.exelButton.Click += new System.EventHandler(this.exelButton_Click);
@@ -237,12 +242,41 @@
             this.ExelWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ExelWorker_DoWork);
             this.ExelWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.ExelWorker_RunWorkerCompleted);
             // 
+            // saveShoppingListButton
+            // 
+            this.saveShoppingListButton.Location = new System.Drawing.Point(7, 235);
+            this.saveShoppingListButton.Name = "saveShoppingListButton";
+            this.saveShoppingListButton.Size = new System.Drawing.Size(104, 23);
+            this.saveShoppingListButton.TabIndex = 9;
+            this.saveShoppingListButton.UseVisualStyleBackColor = true;
+            this.saveShoppingListButton.Click += new System.EventHandler(this.saveShoppingListButton_Click);
+            // 
+            // PreviousButton
+            // 
+            this.PreviousButton.Location = new System.Drawing.Point(12, 384);
+            this.PreviousButton.Name = "PreviousButton";
+            this.PreviousButton.Size = new System.Drawing.Size(116, 23);
+            this.PreviousButton.TabIndex = 10;
+            this.PreviousButton.UseVisualStyleBackColor = true;
+            this.PreviousButton.Click += new System.EventHandler(this.PreviousButton_Click);
+            // 
+            // SaveShoppingWorker
+            // 
+            this.SaveShoppingWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.SaveShoppingWorker_DoWork);
+            this.SaveShoppingWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SaveShoppingWorker_RunWorkerCompleted);
+            // 
+            // WatchPreviusWorker
+            // 
+            this.WatchPreviusWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.WatchPreviusWorker_DoWork);
+            this.WatchPreviusWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.WatchPreviusWorker_RunWorkerCompleted);
+            // 
             // ItemsSelectionFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(828, 427);
+            this.Controls.Add(this.PreviousButton);
             this.Controls.Add(this.storesGB);
             this.Controls.Add(this.priceImage);
             this.Controls.Add(this.selectItemsButton);
@@ -283,5 +317,9 @@
         private System.Windows.Forms.GroupBox storesGB;
         private System.Windows.Forms.Button exelButton;
         private System.ComponentModel.BackgroundWorker ExelWorker;
+        private System.Windows.Forms.Button saveShoppingListButton;
+        private System.Windows.Forms.Button PreviousButton;
+        private System.ComponentModel.BackgroundWorker SaveShoppingWorker;
+        private System.ComponentModel.BackgroundWorker WatchPreviusWorker;
     }
 }
