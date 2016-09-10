@@ -1,0 +1,47 @@
+Price Compare document
+Basic Requirements:
+1.Reading from XML of supermarkets.
+2.The user can select the shopping list and compare 
+  between the shopping carts of all supermarkets.
+3.The aplication show the total price of each shopping cart
+  ,the three most expensive items and three cheapes items of 
+  each shopping cart. 
+
+Extensions:
+1. Graphic ui.
+2. Sort by geographic area and chain.
+3. Save the user shopping list.
+6. Users management and saving their shopping list.
+8. Exel document with table and graph.
+
+Projects:
+1.PriceCompareControl
+ Contain the logic of the solution.
+ 1.1 Interfaces:
+    1.1.1 IPriceCompareManager
+    1.1.2 IUsersManager
+    1.1.3 IDataEngine
+    1.1.4 IUsersEngine
+ 1.2 Managers
+    1.2.1 PriceCompareManager:IPriceCompareManager
+          Get the Items from Map xml.
+          Return the shopping carts of selected items.
+          Plot a graph and table to Exel file.
+          Add a shopping list by user request.
+          Ruturn to user all the shopping list he saved.
+     1.2.2 UsersManager:IUsersManager
+           Check the user name and password when the user try to login
+           Add new user to users file 
+ 
+2.PriceCompareWinFormApp
+  2.1 Forms
+      Login Forms
+      Item selection Forms
+      Showing products to choose from and the selected shopping list
+      Store form
+      showing information of spacific shooping cart according to the user selection
+
+3.PriceCompareEntities
+  
+  
+
