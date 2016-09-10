@@ -27,7 +27,7 @@ namespace PriceCompareWinFormApp
             _priceCompare = new PriceCompareManager();
             InitializeComponent();
         }
-
+        
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
