@@ -64,7 +64,7 @@ namespace PriceCompareControl
             dataEngine.AddUserShoppingList(userName,itemsList);
         }
 
-        public bool ToExelFile(List<ShoppingCart> storesList)
+        public bool ToExcelFile(List<ShoppingCart> storesList)
         {
             try
             {

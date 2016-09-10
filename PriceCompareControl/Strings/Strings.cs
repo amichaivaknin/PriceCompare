@@ -24,7 +24,7 @@
         public static string SelectButton { get; } = "Start Compare";
         public static string UpdateButton { get; } = "Update stores";
         public static string InvalidQty { get; } = "You try to insert invalid Qty in item no:";
-        public static string ExelButton { get; } = "Export to Exel";
+        public static string ExcelButton { get; } = "Export to Excel";
         public static string SaveShoppingListButton { get; } = "Save Shopping List";
         public static string PreviousButton { get; } = "Watch Previous shopping lists";
         public static string SaveShoppingListMessage { get; } = "The Shoping list save in file";

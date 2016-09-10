@@ -37,7 +37,7 @@ namespace PriceCompareWinFormApp
             selectItemsButton.Text = Strings.SelectButton;
             priceImage.Image = Image.FromFile(@"..\..\..\priceImage.png");
             updateButton.Text = Strings.UpdateButton;
-            exelButton.Text = Strings.ExelButton;
+            exelButton.Text = Strings.ExcelButton;
             saveShoppingListButton.Text = Strings.SaveShoppingListButton;
             if (_username== "Unregistered User")
             {
@@ -48,7 +48,7 @@ namespace PriceCompareWinFormApp
                 PreviousButton.Text = Strings.PreviousButton;
             }
             
-            //storesGB.Visible = false;
+            storesGB.Visible = false;
         }
 
         private void selectItems_Click(object sender, EventArgs e)
@@ -230,7 +230,7 @@ namespace PriceCompareWinFormApp
         {
 
             var storesList = (List<ShoppingCart>)e.Argument;
-            e.Result=_priceCompare.ToExelFile(storesList);
+            e.Result=_priceCompare.ToExcelFile(storesList);
         }
 
         private void ExelWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)

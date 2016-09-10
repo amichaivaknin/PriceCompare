@@ -9,7 +9,7 @@ namespace PriceCompareControl
 
         IDictionary<int, ShoppingCart> GetShoppingCarts(IEnumerable<MapItem> items);
 
-        bool ToExelFile(List<ShoppingCart> storesList);
+        bool ToExcelFile(List<ShoppingCart> storesList);
 
         void AddUserShoppingList(string userName, List<MapItem> itemsList);
 

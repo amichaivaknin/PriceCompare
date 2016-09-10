@@ -257,7 +257,7 @@
             // 
             this.PreviousButton.Location = new System.Drawing.Point(12, 384);
             this.PreviousButton.Name = "PreviousButton";
-            this.PreviousButton.Size = new System.Drawing.Size(116, 23);
+            this.PreviousButton.Size = new System.Drawing.Size(220, 23);
             this.PreviousButton.TabIndex = 10;
             this.PreviousButton.UseVisualStyleBackColor = true;
             this.PreviousButton.Click += new System.EventHandler(this.PreviousButton_Click);
