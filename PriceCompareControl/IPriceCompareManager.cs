@@ -7,9 +7,7 @@ namespace PriceCompareControl
     {
         IDictionary<int, MapItem> MapItems { get; }
 
-        IDictionary<string, StoreItem> GetItemByStores(MapItem mapItem);
-
-        Store GetStoreInfo(string chainId, string storeid);
+        IDictionary<int, ShoppingCart> GetShoppingCarts(IEnumerable<MapItem> items);
 
         bool ToExelFile(List<ShoppingCart> storesList);
 

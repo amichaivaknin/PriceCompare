@@ -26,10 +26,19 @@
       <ShoppingList>
         <Item ItemName="משקה חלב אייס קפה 2% תנובה 340 מל" UnitQty="יח" Qty="34" />
       </ShoppingList>
+      <ShoppingList>
+        <Item ItemName="מלפפון" UnitQty="ק&quot;ג" Qty="1" />
+        <Item ItemName="מלון" UnitQty="ק&quot;ג" Qty="1" />
+        <Item ItemName="פלפל חריף" UnitQty="ק&quot;ג" Qty="1" />
+      </ShoppingList>
     </ShoppingLists>
   </User>
   <User userName="2" password="1234">
-    <ShoppingLists></ShoppingLists>
+    <ShoppingLists>
+      <ShoppingList>
+        <Item ItemName="מלפפון" UnitQty="ק&quot;ג" Qty="1" />
+      </ShoppingList>
+    </ShoppingLists>
   </User>
   <User userName="3" password="1234">
     <ShoppingLists></ShoppingLists>
@@ -39,5 +48,12 @@
   </User>
   <User userName="5" password="1234">
     <ShoppingLists></ShoppingLists>
+  </User>
+  <User userName="Amichai" password="1234">
+    <ShoppingLists>
+      <ShoppingList>
+        <Item ItemName="מלפפון" UnitQty="ק&quot;ג" Qty="1" />
+      </ShoppingList>
+    </ShoppingLists>
   </User>
 </Users>

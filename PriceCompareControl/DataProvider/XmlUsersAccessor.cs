@@ -28,7 +28,7 @@ namespace PriceCompareControl.DataProvider
                     "User",
                     new XAttribute("userName", userName),
                     new XAttribute("password", password),
-                    new XElement("ShoppingCarts")
+                    new XElement("ShoppingLists")
                     )
                 );
             document.Save(@"..\..\..\xmls\users.xml");

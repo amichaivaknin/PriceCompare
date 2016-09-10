@@ -28,9 +28,10 @@
         public static string SaveShoppingListButton { get; } = "Save Shopping List";
         public static string PreviousButton { get; } = "Watch Previous shopping lists";
         public static string SaveShoppingListMessage { get; } = "The Shoping list save in file";
+        public static string SaveShoppingErrorMessage { get; } = "You can not save a shopping list as unregistered User";
         //End Of ItemsSelectionForm
 
-
+        //StoreForm
         public static string StoreWindowName { get; } = "Store Window";
         public static string ChainNameLabel { get; } = "Chain Name:";
         public static string SubChainNameLabel { get; } = "Sub Chain Name:";
@@ -40,5 +41,6 @@
         public static string MinLabel { get; } = "3 cheapes items";
         public static string MaxLabel { get; } = "3 most expansive items";
         public static string AllItems { get; } = "All items in shopping cart";
+        //End of StoreForm
     }
 }

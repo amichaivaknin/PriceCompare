@@ -13,11 +13,10 @@ namespace PriceCompareWinFormApp
     public sealed partial class ItemsSelectionFrom : Form
     {
         private readonly IPriceCompareManager _priceCompare;
-        private readonly Dictionary<string, ShoppingCart> _storesCarts = new Dictionary<string, ShoppingCart>();
         private readonly string _username;
         private Dictionary<int, MapItem> _menuItems;
-        private Dictionary<int, ShoppingCart> _selectedStore;
-        private Dictionary<int, ShoppingCart> _displayStore;
+        private Dictionary<int, ShoppingCart> _selectedStores;
+        private Dictionary<int, ShoppingCart> _displayStores;
         private List<MapItem> _selectedItems;
 
         public ItemsSelectionFrom(string username)
@@ -95,7 +94,7 @@ namespace PriceCompareWinFormApp
         private void exelButton_Click(object sender, EventArgs e)
         {
             exelButton.Visible = false;
-            ExelWorker.RunWorkerAsync(_displayStore.Values.ToList());
+            ExelWorker.RunWorkerAsync(_displayStores.Values.ToList());
         }
 
         private void saveShoppingListButton_Click(object sender, EventArgs e)
@@ -115,34 +114,8 @@ namespace PriceCompareWinFormApp
             {
                 return;
             }
-            var storeForm = new StoreForm(_displayStore[e.RowIndex]);
+            var storeForm = new StoreForm(_displayStores[e.RowIndex]);
             storeForm.Show();
-        }
-
-        private void SetShoppingCartsInfo()
-        {
-            foreach (var storeCart in _storesCarts)
-            {
-                var store = _priceCompare.GetStoreInfo(storeCart.Value.ChainId, storeCart.Value.StoreId);
-                storeCart.Value.Address = store.Address;
-                storeCart.Value.ChainName = store.ChainName;
-                storeCart.Value.StoreName = store.StoreName;
-                storeCart.Value.City = store.City;
-            }
-        }
-
-        private void AddItemToShoppingCarts(IDictionary<string, StoreItem> itemByStore)
-        {
-            if (itemByStore == null) return;
-            foreach (var item in itemByStore)
-            {
-                if (!_storesCarts.ContainsKey(item.Key))
-                {
-                    _storesCarts.Add(item.Key,
-                        new ShoppingCart(item.Key, item.Value.ChainId, item.Value.SubChainId, item.Value.StoreId));
-                }
-                _storesCarts[item.Key].AddItem(item.Value);
-            }
         }
 
         private void MenuItemsWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -162,34 +135,11 @@ namespace PriceCompareWinFormApp
 
         private void AddItemsWorker_DoWork(object sender, DoWorkEventArgs e)
         {
-            var items = e.Argument as List<MapItem>;
-            if (items == null) return;
-            foreach (var itemByStore in items.Select(item => _priceCompare.GetItemByStores(item)))
-            {
-                AddItemToShoppingCarts(itemByStore);
-            }
-            SetShoppingCartsInfo();
-            var sc =
-                _storesCarts.Where(store => store.Value.Items.Count() == items.Count)
-                    .ToDictionary(store => store.Key, store => store.Value);
-            _storesCarts.Clear();
-            foreach (var store in sc)
-            {
-                _storesCarts.Add(store.Key, store.Value);
-            }
-            e.Result = null;
-        }
-
-        private void AddItemsWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            var i = 0;
-            _selectedStore = new Dictionary<int, ShoppingCart>();
-            _displayStore = new Dictionary<int, ShoppingCart>();
+            var mapItems = e.Argument as List<MapItem>;
+            _displayStores = _selectedStores = _priceCompare.GetShoppingCarts(mapItems).ToDictionary(x => x.Key, x => x.Value);
             var cities = new List<string> {"הכל"};
             var chains = new List<string> {"הכל"};
-            storesGrid.Rows.Clear();
-            storesGrid.Refresh();
-            foreach (var store in _storesCarts.Values)
+            foreach (var store in _selectedStores.Values)
             {
                 if (!cities.Contains(store.City))
                 {
@@ -199,15 +149,31 @@ namespace PriceCompareWinFormApp
                 {
                     chains.Add(store.ChainName);
                 }
-                _selectedStore.Add(i, store);
-                _displayStore.Add(i++, store);
+            }
+
+            e.Result =new List<string[]>
+            {
+                chains.ToArray(),
+                cities.ToArray()
+            };
+            
+        }
+
+        private void AddItemsWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            var con = (List <string[]>) e.Result;
+            storesGrid.Rows.Clear();
+            storesGrid.Refresh();
+            foreach (var store in _selectedStores.Values)
+            {
                 storesGrid.Rows.Add($"{store.ChainName} {store.StoreName}", store.Total, "Store info");
             }
-            ChainCB.Items.AddRange(chains.ToArray());
-            citiesCB.Items.AddRange(cities.ToArray());
+            var chains = con[0];
+            var cities = con[1];
+            ChainCB.Items.AddRange(chains);
+            citiesCB.Items.AddRange(cities);
             storesGB.Visible = true;
             priceImage.Visible = false;
-            _storesCarts.Clear();
             selectItemsButton.Visible = true;
         }
 
@@ -225,9 +191,9 @@ namespace PriceCompareWinFormApp
 
             if (city == "הכל" && chain == "הכל")
             {
-                e.Result = _selectedStore;
+                e.Result = _selectedStores;
             }
-            var sd = _selectedStore.Values.Where(store => city == null || city == "הכל" || store.City == city)
+            var sd = _selectedStores.Values.Where(store => city == null || city == "הכל" || store.City == city)
                 .Where(store => chain == null || chain == "הכל" || store.ChainName == chain)
                 .ToDictionary(store => i++);
             e.Result = sd;
@@ -239,12 +205,12 @@ namespace PriceCompareWinFormApp
             {
                 return;
             }
-
-            _displayStore = (Dictionary<int, ShoppingCart>) e.Result;
+   
+            _displayStores = (Dictionary<int, ShoppingCart>) e.Result;
 
             storesGrid.Rows.Clear();
             storesGrid.Refresh();
-            foreach (var store in _displayStore.Values)
+            foreach (var store in _displayStores.Values)
             {
                 storesGrid.Rows.Add($"{store.ChainName} {store.StoreName}", store.Total, "Store info");
             }
@@ -252,6 +218,7 @@ namespace PriceCompareWinFormApp
 
         private void ExelWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+
             var storesList = (List<ShoppingCart>)e.Argument;
             e.Result=_priceCompare.ToExelFile(storesList);
         }
@@ -265,12 +232,23 @@ namespace PriceCompareWinFormApp
 
         private void SaveShoppingWorker_DoWork(object sender, DoWorkEventArgs e)
         {
+            if (_username== "Unregistered User")
+            {
+                return;
+            }
             _priceCompare.AddUserShoppingList(_username, _selectedItems);
         }
 
         private void SaveShoppingWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show(Strings.SaveShoppingListMessage);
+            if (_username == "Unregistered User")
+            {
+                MessageBox.Show(Strings.SaveShoppingErrorMessage);
+            }
+            else
+            {
+                MessageBox.Show(Strings.SaveShoppingListMessage);
+            }       
         }
 
         private void WatchPreviusWorker_DoWork(object sender, DoWorkEventArgs e)
