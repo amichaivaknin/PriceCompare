@@ -135,5 +135,89 @@
   <BisWeighted>0</BisWeighted>
   <ItemCode>7290004137809</ItemCode>  
 </Item>
+<Item>
+<ItemName>נקה 7 שמפו 750 מל כתום</ItemName>
+  <UnitQty>יח</UnitQty>
+  <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
+  <ItemCode>7290004146986</ItemCode>  
+</Item>
+<Item>
+<ItemName>נקה 7 מרכך 750 מל כתו</ItemName>
+  <UnitQty>יח</UnitQty>
+  <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
+  <ItemCode>7290004146993</ItemCode>  
+</Item>
+<Item>
+<ItemName>פוסידון סרדין בשמן צמחי</ItemName>
+  <UnitQty>יח</UnitQty>
+  <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
+  <ItemCode>7290004225377</ItemCode>  
+</Item>
+<Item>
+<ItemName>פוסידון סרדין בשמן זית</ItemName>
+  <UnitQty>יח</UnitQty>
+  <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
+  <ItemCode>7290004225384</ItemCode>  
+</Item>
+<Item>
+<ItemName>קבב מזרחי 500 גר` עטרה</ItemName>
+  <UnitQty>יח</UnitQty>
+  <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
+  <ItemCode>7290004263027</ItemCode>  
+</Item>
+<Item>
+<ItemName>טונה סטארכיסט בשמן 160 גר` רביעייה</ItemName>
+  <UnitQty>יח</UnitQty>
+  <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
+  <ItemCode>7290005287206</ItemCode>  
+</Item>
+<Item>
+<ItemName>צ`יטוס קרנצ` 100 גר` בוטנים</ItemName>
+  <UnitQty>יח</UnitQty>
+  <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
+  <ItemCode>7290005201479</ItemCode>  
+</Item>
+<Item>
+<ItemName>תפוצ`יפס 50 גר שמנת בצל</ItemName>
+  <UnitQty>יח</UnitQty>
+  <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
+  <ItemCode>7290005200786</ItemCode>  
+</Item>
+<Item>
+<ItemName>ביסקוויט עד חצות מריר 200 גר</ItemName>
+  <UnitQty>יח</UnitQty>
+  <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
+  <ItemCode>7290005199622</ItemCode>  
+</Item>
+<Item>
+<ItemName>מסטיק מאסט</ItemName>
+  <UnitQty>יח</UnitQty>
+  <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
+  <ItemCode>7290005199288</ItemCode>  
+</Item>
+<Item>
+<ItemName>פתי בר 1.75 קג</ItemName>
+  <UnitQty>יח</UnitQty>
+  <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
+  <ItemCode>7290005198045</ItemCode>  
+</Item>
+<Item>
+<ItemName>אלפרו סויה סידן שלישיות</ItemName>
+  <UnitQty>יח</UnitQty>
+  <GlobalCode>1</GlobalCode>
+  <BisWeighted>0</BisWeighted>
+  <ItemCode>7290005191602</ItemCode>  
+</Item>
 </Items>
  
