@@ -18,7 +18,7 @@ namespace PriceCompareWinFormApp
         private Dictionary<int, ShoppingCart> _selectedStores;
         private Dictionary<int, ShoppingCart> _displayStores;
         private List<MapItem> _selectedItems;
-        private LogInForm _logInForm;
+        private readonly LogInForm _logInForm;
 
         public ItemsSelectionFrom(LogInForm logInForm, string username)
         {
@@ -279,7 +279,7 @@ namespace PriceCompareWinFormApp
         private void signOut_Click(object sender, EventArgs e)
         {
            _logInForm.Show();
-            this.Dispose();
+            Dispose();
         }
     }
 }
