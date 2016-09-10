@@ -12,15 +12,17 @@ namespace PriceCompareWinFormApp
 {
     public sealed partial class ItemsSelectionFrom : Form
     {
-        private readonly IPriceCompareManager _priceCompare;
         private readonly string _username;
+        private readonly IPriceCompareManager _priceCompare;
         private Dictionary<int, MapItem> _menuItems;
         private Dictionary<int, ShoppingCart> _selectedStores;
         private Dictionary<int, ShoppingCart> _displayStores;
         private List<MapItem> _selectedItems;
+        private LogInForm _logInForm;
 
-        public ItemsSelectionFrom(string username)
+        public ItemsSelectionFrom(LogInForm logInForm, string username)
         {
+            _logInForm = logInForm;
             _username = username;
             _priceCompare = new PriceCompareManager();
             InitializeComponent();
@@ -37,8 +39,16 @@ namespace PriceCompareWinFormApp
             updateButton.Text = Strings.UpdateButton;
             exelButton.Text = Strings.ExelButton;
             saveShoppingListButton.Text = Strings.SaveShoppingListButton;
-            PreviousButton.Text = Strings.PreviousButton;
-            storesGB.Visible = false;
+            if (_username== "Unregistered User")
+            {
+                PreviousButton.Visible = false;
+            }
+            else
+            {
+                PreviousButton.Text = Strings.PreviousButton;
+            }
+            
+            //storesGB.Visible = false;
         }
 
         private void selectItems_Click(object sender, EventArgs e)
@@ -241,14 +251,9 @@ namespace PriceCompareWinFormApp
 
         private void SaveShoppingWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            if (_username == "Unregistered User")
-            {
-                MessageBox.Show(Strings.SaveShoppingErrorMessage);
-            }
-            else
-            {
-                MessageBox.Show(Strings.SaveShoppingListMessage);
-            }       
+            MessageBox.Show(_username == "Unregistered User"
+                ? Strings.SaveShoppingErrorMessage
+                : Strings.SaveShoppingListMessage);
         }
 
         private void WatchPreviusWorker_DoWork(object sender, DoWorkEventArgs e)
@@ -269,6 +274,12 @@ namespace PriceCompareWinFormApp
         {
            var listsString = (string) e.Result;
             MessageBox.Show(listsString);
+        }
+
+        private void signOut_Click(object sender, EventArgs e)
+        {
+           _logInForm.Show();
+            this.Dispose();
         }
     }
 }

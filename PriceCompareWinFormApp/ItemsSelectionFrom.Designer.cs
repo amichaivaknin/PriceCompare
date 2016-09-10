@@ -49,11 +49,12 @@
             this.UpdateWorker = new System.ComponentModel.BackgroundWorker();
             this.storesGB = new System.Windows.Forms.GroupBox();
             this.exelButton = new System.Windows.Forms.Button();
-            this.ExelWorker = new System.ComponentModel.BackgroundWorker();
             this.saveShoppingListButton = new System.Windows.Forms.Button();
+            this.ExelWorker = new System.ComponentModel.BackgroundWorker();
             this.PreviousButton = new System.Windows.Forms.Button();
             this.SaveShoppingWorker = new System.ComponentModel.BackgroundWorker();
             this.WatchPreviusWorker = new System.ComponentModel.BackgroundWorker();
+            this.signOut = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.itemsGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.storesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceImage)).BeginInit();
@@ -63,9 +64,10 @@
             // UserNameLabel
             // 
             this.UserNameLabel.AutoSize = true;
+            this.UserNameLabel.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UserNameLabel.Location = new System.Drawing.Point(13, 13);
             this.UserNameLabel.Name = "UserNameLabel";
-            this.UserNameLabel.Size = new System.Drawing.Size(0, 13);
+            this.UserNameLabel.Size = new System.Drawing.Size(0, 34);
             this.UserNameLabel.TabIndex = 0;
             // 
             // MenuItemsWorker
@@ -237,11 +239,6 @@
             this.exelButton.UseVisualStyleBackColor = true;
             this.exelButton.Click += new System.EventHandler(this.exelButton_Click);
             // 
-            // ExelWorker
-            // 
-            this.ExelWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ExelWorker_DoWork);
-            this.ExelWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.ExelWorker_RunWorkerCompleted);
-            // 
             // saveShoppingListButton
             // 
             this.saveShoppingListButton.Location = new System.Drawing.Point(7, 235);
@@ -250,6 +247,11 @@
             this.saveShoppingListButton.TabIndex = 9;
             this.saveShoppingListButton.UseVisualStyleBackColor = true;
             this.saveShoppingListButton.Click += new System.EventHandler(this.saveShoppingListButton_Click);
+            // 
+            // ExelWorker
+            // 
+            this.ExelWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.ExelWorker_DoWork);
+            this.ExelWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.ExelWorker_RunWorkerCompleted);
             // 
             // PreviousButton
             // 
@@ -270,12 +272,23 @@
             this.WatchPreviusWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.WatchPreviusWorker_DoWork);
             this.WatchPreviusWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.WatchPreviusWorker_RunWorkerCompleted);
             // 
+            // signOut
+            // 
+            this.signOut.Location = new System.Drawing.Point(741, 12);
+            this.signOut.Name = "signOut";
+            this.signOut.Size = new System.Drawing.Size(75, 23);
+            this.signOut.TabIndex = 11;
+            this.signOut.Text = "Sign out";
+            this.signOut.UseVisualStyleBackColor = true;
+            this.signOut.Click += new System.EventHandler(this.signOut_Click);
+            // 
             // ItemsSelectionFrom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(828, 427);
+            this.Controls.Add(this.signOut);
             this.Controls.Add(this.PreviousButton);
             this.Controls.Add(this.storesGB);
             this.Controls.Add(this.priceImage);
@@ -321,5 +334,6 @@
         private System.Windows.Forms.Button PreviousButton;
         private System.ComponentModel.BackgroundWorker SaveShoppingWorker;
         private System.ComponentModel.BackgroundWorker WatchPreviusWorker;
+        private System.Windows.Forms.Button signOut;
     }
 }

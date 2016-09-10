@@ -58,19 +58,23 @@ namespace PriceCompareControl
             return dataEngine.GetAllShoppingList(userName);
         } 
 
+        public void AddUserShoppingList(string userName, List<MapItem> itemsList)
+        {
+            IDataEngine dataEngine = new XmlsDataEngine();
+            dataEngine.AddUserShoppingList(userName,itemsList);
+        }
+
         public bool ToExelFile(List<ShoppingCart> storesList)
         {
-            try 
+            try
             {
-                object misValue = System.Reflection.Missing.Value;
                 var xlApp = new Application();
+                object misValue = System.Reflection.Missing.Value;
                 var xlWorkBook = xlApp.Workbooks.Add(misValue);
                 var xlWorkSheet = (Worksheet)xlWorkBook.Worksheets.Item[1];
-
                 xlWorkSheet.Cells[1, 1] = "Price Compare";
 
                 var i = 2;
-
                 foreach (var store in storesList)
                 {
                     var j = 2;
@@ -87,9 +91,10 @@ namespace PriceCompareControl
                 var chartRange = xlWorkSheet.Range["B4", $"{ch}4"];
                 chartPage.SetSourceData(chartRange, misValue);
                 chartPage.ChartType = XlChartType.xlColumnClustered;
-                xlWorkBook.SaveAs($@"{Environment.CurrentDirectory}\..\..\..\PriceCompare.xls", XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                xlWorkBook.SaveAs($@"{Environment.CurrentDirectory}\..\..\..\PriceCompare1.xls", XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                 xlWorkBook.Close(true, misValue, misValue);
                 xlApp.Quit();
+
                 ReleaseObject(xlWorkSheet);
                 ReleaseObject(xlWorkBook);
                 ReleaseObject(xlApp);
@@ -99,24 +104,19 @@ namespace PriceCompareControl
             {
 
                 return false;
-            }     
+            }          
         }
 
-        public void AddUserShoppingList(string userName, List<MapItem> itemsList)
-        {
-            IDataEngine dataEngine = new XmlsDataEngine();
-            dataEngine.AddUserShoppingList(userName,itemsList);
-        }
- 
         private static void ReleaseObject(object obj)
         {
             try
             {
                 System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
             }
             catch (Exception)
             {
-                // ignored
+                obj = null;
             }
             finally
             {

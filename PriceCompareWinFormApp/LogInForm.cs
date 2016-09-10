@@ -21,8 +21,20 @@ namespace PriceCompareWinFormApp
             SignupButton.Text = Strings.SignUpButton;
             UnregisteredButton.Text = Strings.UnRegisteredButton;
             _usersManager=new UsersManager();
-            LoginWorker.RunWorkerCompleted +=LoginWorker_RunWorkerCompleted;
-            NewUserWorker.RunWorkerCompleted+= NewUserWorker_RunWorkerCompleted;
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+            Text = Strings.LoginWindowName;
+            HelloLabel.Text = Strings.WellcomeMessage;
+            UserNameLabel.Text = Strings.UserNameMessage;
+            PasswordLabel.Text = Strings.PasswordMessage;
+            LoginButton.Text = Strings.LoginButton;
+            SignupButton.Text = Strings.SignUpButton;
+            UnregisteredButton.Text = Strings.UnRegisteredButton;
+            LoginWorker.RunWorkerCompleted += LoginWorker_RunWorkerCompleted;
+            NewUserWorker.RunWorkerCompleted += NewUserWorker_RunWorkerCompleted;
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
@@ -62,9 +74,11 @@ namespace PriceCompareWinFormApp
 
         private void OpenItemsSelectionWindow(string username)
         {
-            var itemsSelectionFrom=new ItemsSelectionFrom(username);
+            var itemsSelectionFrom=new ItemsSelectionFrom(this,username);
             itemsSelectionFrom.Show();
             Hide();
+            UserNameTextBox.Text="";
+            PasswordTextBox.Text = "";
         }
 
         private static bool CheckUserNameAndPassword(string username, string password)
